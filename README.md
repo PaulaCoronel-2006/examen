@@ -7,53 +7,44 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## EXAMEN-LAVANDERÍA
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Sistema de Gestión de Lavandería - LavaExpress
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este proyecto es una aplicación web desarrollada con Laravel para la gestión de pedidos de lavandería, diseñada para ser utilizada en dispositivos móviles por el personal de recepción.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 1. Decisiones de Diseño
 
-## Learning Laravel
+### Estructura de Datos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Se ha implementado una tabla denominada `pedidos` con los siguientes campos técnicos:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* **cliente**: Almacena el nombre del cliente (Tipo String, 100 caracteres).
+* **telefono**: Almacena el contacto para notificaciones (Tipo String, 20 caracteres).
+* **servicio**: Define el tipo de trabajo a realizar (Lavado, Secado, etc.).
+* **cantidad_prendas**: Campo numérico para el control de inventario.
+* **estado**: Campo con valor predeterminado 'Recibido' para control de flujo.
+* **timestamps**: Registro automático de fecha y hora de recepción.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+<img width="419" height="446" alt="image" src="https://github.com/user-attachments/assets/2aa69bf6-9a10-4e66-87ae-07ba7f4a2100" />
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
+### Lógica de Negocio y Validaciones (PHP)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para garantizar la integridad de la base de datos **examen**, se implementaron validaciones estrictas en el controlador:
 
-## Code of Conduct
+* **Integridad**: Todos los campos son obligatorios para evitar registros incompletos.
+* **Validación de Nombre**: Se utiliza una expresión regular (`regex:/^[a-zA-Z\s]+$/`) que prohíbe el ingreso de números en el nombre del cliente.
+* **Validación Numérica**: El campo `cantidad_prendas` solo acepta números enteros (`integer`) y valores mayores a cero (`min:1`).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Gestión de Registros
 
-## Security Vulnerabilities
+* **Eliminación**: Se permite la eliminación de registros para mantener la base de datos libre de errores de digitación.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<img width="886" height="962" alt="image" src="https://github.com/user-attachments/assets/1100e6eb-1ee3-40f4-864b-cf8de5e44547" />
+<img width="886" height="511" alt="image" src="https://github.com/user-attachments/assets/9f5b9653-9bd4-4b11-bc5b-3b61546a54ea" />
+<img width="886" height="305" alt="image" src="https://github.com/user-attachments/assets/2a4623ee-a802-418e-b660-e341bbd3e100" />
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
