@@ -39,6 +39,8 @@ Para garantizar la integridad de la base de datos **examen**, se implementaron v
 * **Validación de Nombre**: Se utiliza una expresión regular (`regex:/^[a-zA-Z\s]+$/`) que prohíbe el ingreso de números en el nombre del cliente.
 * **Validación Numérica**: El campo `cantidad_prendas` solo acepta números enteros (`integer`) y valores mayores a cero (`min:1`).
 
+https://github.com/PaulaCoronel-2006/examen
+
 ### Gestión de Registros
 
 * **Eliminación**: Se permite la eliminación de registros para mantener la base de datos libre de errores de digitación.
