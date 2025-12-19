@@ -9,18 +9,19 @@ class PedidoController extends Controller
 {
     public function index()
     {
-        $pedidos = Pedido::getPedidos(); // Llama al método all() que corregimos arriba
+        $pedidos = Pedido::getPedidos();
         return view('Pedidos.index', compact('pedidos'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'cliente' => 'required|max:100',
-            'telefono' => 'required',
+            'cliente' => 'required|regex:/^[a-zA-Z\s]+$/|max:100',
+            'telefono' => 'required|numeric',
             'servicio' => 'required',
-            'cantidad_prendas' => 'required|integer',
+            'cantidad_prendas' => 'required|integer|min:1',
         ]);
+
         Pedido::createPedido($request->all());
         return redirect()->route('pedidos.index')->with('success', 'Pedido registrado.');
     }
